@@ -1,0 +1,24 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CYOA</title>
+</head>
+<body>
+    <h1>{{.Title}}</h1>
+
+    {{range $i, $var := .Story}}
+        <p> {{$var}} </p>
+    {{end}}
+    
+    {{if not .Options}}
+        <div><a href="/">THE END</a></div>   
+    {{else}}
+        {{range $i, $opt := .Options}}
+            <div><a href="/{{$opt.Arc}}">{{$i}}.{{$opt.Text}}</a></div>   
+        {{end}}
+    {{end}}
+
+</body>
+</html>
